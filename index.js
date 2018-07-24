@@ -4,8 +4,8 @@ const path = require('path')
 const ylog = require('ylog')
 const {dist, ignore, uploader} = require('rc')('upload')
 
-const qiniu = require('./qiniu')
-const ali = require('./ali')
+const qiniu = require('./bin/qiniu')
+const ali = require('./bin/ali')
 
 const {uploadFile, checkIfExist} = uploader.indexOf('qiniu') > -1 ? qiniu : ali
 
