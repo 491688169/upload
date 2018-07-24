@@ -12,7 +12,7 @@ const {uploadFile, checkIfExist} = uploader.indexOf('qiniu') > -1 ? qiniu : ali
 const rootDir = process.cwd()
 const distDir = path.join(rootDir, dist)
 
-function fileRecursion() {
+function fileRecursion(target) {
     fs.readdir(distDir, (err, files) => {
         if (err) ylog.error(err)
         else {
@@ -28,7 +28,7 @@ function fileRecursion() {
                     if (status.isDirectory()) {
                         fileRecursion(file)
                     } else if (status.isFile()) {
-                        checkIfExist(filename, uploadFile.bind(this, file, filename))
+                        checkIfExist(filename, uploadFile.bind(this, file, filename, target))
                     }
                 })
             })
