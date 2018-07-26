@@ -20,10 +20,10 @@ const options = {
 const putPolicy = new qiniu.rs.PutPolicy(options)
 const uploadToken = putPolicy.uploadToken(mac)
 
-function uploadFile(filePath, filename, target) {
+function uploadFile(filePath, filename, prefix) {
     const mimeType = mime.getType(filePath)
     const putExtra = new qiniu.form_up.PutExtra({}, mimeType)
-    const key = filename.indexOf('dll.vendor') > -1 ? `staSrc4/${target}/${filename}` : `staSrc4/${process.env.PRODUCT}/${target}/${filename}`
+    const key = eval(prefix) + filename
     formUploader.putFile(uploadToken, key, filePath, putExtra, (resErr, resBody, resInfo) => {
         if (resErr) throw resErr
 

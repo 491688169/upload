@@ -10,8 +10,8 @@ const client = OSS({
     accessKeyId, accessKeySecret, region, bucket
 })
 
-function uploadFile(filePath, filename) {
-    const key = filename.indexOf('dll.vendor') > -1 ? `staSrc4/${filename}` : `staSrc4/${process.env.PRODUCT}/${filename}`
+function uploadFile(filePath, filename, prefix) {
+    const key = eval(prefix) + filename
 
     co(function* () {
         const {res: {statusCode}, name} = yield client.put(key, filePath)
@@ -27,7 +27,7 @@ function uploadFile(filePath, filename) {
 }
 
 function checkIfExist(filename, callback) {
-    const key = filename.indexOf('dll.vendor') > -1 ? `staSrc4/${filename}` : `staSrc4/${process.env.PRODUCT}/${filename}`
+    const key = eval(prefix) + filename
 
     co(function* () {
         const result = yield client.get(key)
