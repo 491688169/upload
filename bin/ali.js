@@ -26,7 +26,7 @@ function uploadFile(filePath, filename, prefix) {
     })
 }
 
-function checkIfExist(filename, callback) {
+function checkIfExist(filename, prefix, callback) {
     const key = eval(prefix) + filename
 
     co(function* () {

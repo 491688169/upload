@@ -28,7 +28,7 @@ function fileRecursion() {
                     if (status.isDirectory()) {
                         fileRecursion(file)
                     } else if (status.isFile()) {
-                        checkIfExist(filename, uploadFile.bind(this, file, filename, prefix))
+                        checkIfExist(filename, prefix, uploadFile.bind(this, file, filename, prefix))
                     }
                 })
             })
