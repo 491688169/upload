@@ -10,7 +10,7 @@ const ali = require('./bin/ali')
 const {uploadFile, checkIfExist} = uploader.indexOf('qiniu') > -1 ? qiniu : ali
 
 const rootDir = process.cwd()
-const distDir = path.join(rootDir, dist)
+const distDir = path.join(rootDir, eval(dist))
 
 function fileRecursion() {
     fs.readdir(distDir, (err, files) => {
