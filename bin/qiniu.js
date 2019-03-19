@@ -34,7 +34,7 @@ function uploadFile(filePath, filename, prefix) {
 }
 
 // 七牛的文件存在检验在上传的response里可以知道，之前就不用检验了
-function checkIfExist(callback) {
+function checkIfExist(filename, prefix, callback) {
     callback && callback()
 }
 
